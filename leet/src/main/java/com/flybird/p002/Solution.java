@@ -21,8 +21,8 @@ public class Solution {
 
         int carryOver = 0;
         ListNode currentNode = null;
-        while (l1 != null || l2 != null) {
-            int v = ((l1 == null)? 0 :l1.val) + ((l2==null)?0:l2.val) + carryOver;
+        while (l1 != null && l2 != null) {
+            int v = l1.val + l2.val + carryOver;
             if (v > 9) {
                 carryOver = 1;
                 v = v - 10;
@@ -41,14 +41,46 @@ public class Solution {
             }
 
             currentNode = node;
-            l1 = (l1 == null) ? l1 : l1.next;
-            l2 = (l2 == null) ? l2 : l2.next;
+            l1 = l1.next;
+            l2 = l2.next;
         }
 
-        if (carryOver == 1) {
-            currentNode.next = new ListNode(carryOver);
+        ListNode l = (l1 == null) ? l2 : l1;
+        while(carryOver > 0 && l != null) {
+            int v = l.val + carryOver;
+            if (v > 9) {
+                carryOver = 1;
+                v = v - 10;
+            }
+            else {
+                carryOver = 0;
+            }
+
+            ListNode node = new ListNode(v);
+            if (root == null) {
+                root = node;
+            }
+
+            if (currentNode != null) {
+                currentNode.next = node;
+            }
+
+            currentNode = node;
+            l = l.next;
         }
+
+        if (carryOver > 0)
+            currentNode.next = new ListNode(carryOver);
+        else
+            currentNode.next = l;
+
 
         return root;
     }
 }
+
+// Although the solution is correct. There are two problem in the testing
+// 1. The running time is 6 ms, which only beats 4.35% submissions
+// 2. The test cannot handle maximum integer case.
+
+// The second solution finishes in 4 ms. improve from 6ms.
