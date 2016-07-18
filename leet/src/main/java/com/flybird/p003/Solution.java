@@ -17,7 +17,7 @@ public class Solution {
             return 1;
 
         int maxLength = 1;
-        int currentLength = 1;
+        int startingIndex = 0;
         Map<Character, Integer> charMap = new HashMap<Character, Integer>();
         charMap.put(s.charAt(0), 0);
         for(int i = 1; i<s.length(); i++) {
@@ -36,3 +36,6 @@ public class Solution {
         return maxLength;
     }
 }
+
+// The first solution store all the visited chars. This should not be the case. any character that is
+// out of the starting substring char should be ignored
