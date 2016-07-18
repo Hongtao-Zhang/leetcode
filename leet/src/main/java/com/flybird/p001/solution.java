@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by hzhang.
  */
-public class solution {
+public class Solution {
 
     public int[] twoSum(int[] nums, int target) {
         if (nums.length < 2)
@@ -26,8 +26,13 @@ public class solution {
 
                 return result;
             }
+
+            elementMap.put(nums[i], i);
         }
 
         return null;
     }
 }
+
+// The first submission failed because I forgot to add the array element into the map after testing for solution
+// That is the first code I put into the array when I typing!
