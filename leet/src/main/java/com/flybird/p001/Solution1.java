@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by hzhang.
  */
-public class Solution {
+public class Solution1 {
 
     public int[] twoSum(int[] nums, int target) {
         if (nums.length < 2)

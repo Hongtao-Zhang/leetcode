@@ -24,7 +24,7 @@ public class SolutionTest {
         maxLength = solution.lengthOfLongestSubstring("aaaaab");
         Assert.assertEquals(2, maxLength);
 
-        maxLength = solution.lengthOfLongestSubstring("abcabcabc");
-        Assert.assertEquals(3, maxLength);
+        maxLength = solution.lengthOfLongestSubstring("abcabcabcd");
+        Assert.assertEquals(4, maxLength);
     }
 }

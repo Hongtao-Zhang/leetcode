@@ -3,16 +3,14 @@ package com.flybird.p001;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by hzhang.
  */
-public class SolutionTest {
+public class Solution1Test {
 
     @Test
     public void testFailedCase1() {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
 
         int[] case1 = new int[3];
         case1[0] = 3;
