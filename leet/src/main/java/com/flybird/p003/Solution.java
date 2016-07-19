@@ -53,4 +53,9 @@ public class Solution {
 
 // Failed again. This time forgot the calculation and ignore the index that is before the starting index
 
-// use bytes, improved from 20ms to 19ms. is there other way to improve it?
+/**
+ * use bytes, improved from 20ms to 19ms. is there other way to improve it?
+ *
+ * Checked the solution. If we know the charset is ascii we can use array instead of map.
+ */
+
