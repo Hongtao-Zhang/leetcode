@@ -10,32 +10,36 @@ public class Solution {
 
 
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty())
+        if (s == null)
             return 0;
 
-        if (s.length() == 1)
-            return 1;
+        int length = s.length();
+        if (length < 2)
+            return length;
 
+        byte[] bytes = s.getBytes();
+        Map<Byte, Integer> byteMap = new HashMap<>();
         int maxLength = 1;
         int startingIndex = 0;
-        Map<Character, Integer> charMap = new HashMap<Character, Integer>();
-        charMap.put(s.charAt(0), 0);
+        byteMap.put(bytes[0], 0);
 
-        for(int i = 1; i<s.length(); i++) {
-            char current = s.charAt(i);
-            if (charMap.containsKey(current)) {
-                int oldIndex = charMap.get(current);
+        for(int i = 1; i<length; i++) {
+            byte current = bytes[i];
+            if (byteMap.containsKey(current)) {
+                int oldIndex = byteMap.get(current);
                 if (oldIndex >= startingIndex) {
-                    if ((i - startingIndex) > maxLength)
-                        maxLength = i - startingIndex;
-                    startingIndex = charMap.get(current) + 1;
+                    int currentLength = i - startingIndex;
+                    if (currentLength > maxLength)
+                        maxLength = currentLength;
+                    startingIndex = oldIndex + 1;
                 }
             }
 
-            charMap.put(current, i);
+            byteMap.put(current, i);
         }
-        if ((s.length() - startingIndex) > maxLength) {
-            maxLength = s.length() - startingIndex;
+        int lastLength = length - startingIndex;
+        if (lastLength > maxLength) {
+            return lastLength;
         }
 
         return maxLength;
@@ -48,3 +52,5 @@ public class Solution {
 // tested null and one char string, but not tested with empty string.
 
 // Failed again. This time forgot the calculation and ignore the index that is before the starting index
+
+// use bytes, improved from 20ms to 19ms. is there other way to improve it?
